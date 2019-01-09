@@ -1,11 +1,19 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
+import { Header, SideBar } from "./components";
+import "semantic-ui-css/semantic.min.css";
 import "./App.css";
-import { Header } from "./components";
-class App extends Component {
-  render() {
-    return <Header />;
+
+function App() {
+  const [showSideBar, setShowSide] = useState(false);
+  function toggleSideBar() {
+    setShowSide(prev => !prev);
   }
+  return (
+    <>
+      <Header toggleSideBar={toggleSideBar} />
+      <SideBar showSideBar={showSideBar} />
+    </>
+  );
 }
 
 export default App;
