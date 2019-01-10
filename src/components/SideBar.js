@@ -7,8 +7,12 @@ const SideMenu = styled.div`
     z-index: -1;
     background-color: #ffff;
   }
+  @media ${p => p.theme.latptop} {
+    visibility: visible;
+  }
 `;
-function SideBar({ showSideBar, toggleSideBar }) {
+function SideBar({ showSideBar, toggleSideBar, fixSide }) {
+  console.log("fixSide", fixSide);
   return (
     <SideMenu>
       <Sidebar
@@ -18,7 +22,7 @@ function SideBar({ showSideBar, toggleSideBar }) {
         inverted
         vertical
         width="very wide"
-        visible={showSideBar}
+        visible={fixSide || showSideBar}
         onHide={toggleSideBar}
       >
         hi
