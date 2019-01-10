@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Header, SideBar } from "./components";
+import { withTheme } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 
@@ -11,9 +12,9 @@ function App() {
   return (
     <>
       <Header toggleSideBar={toggleSideBar} />
-      <SideBar showSideBar={showSideBar} />
+      <SideBar showSideBar={showSideBar} toggleSideBar={toggleSideBar} />
     </>
   );
 }
 
-export default App;
+export default withTheme(App);

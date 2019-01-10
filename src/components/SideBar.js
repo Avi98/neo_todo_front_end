@@ -4,10 +4,11 @@ import { Sidebar, Menu } from "semantic-ui-react";
 
 const SideMenu = styled.div`
   .ui.inverted.menu {
+    z-index: -1;
     background-color: #ffff;
   }
 `;
-function SideBar({ showSideBar }) {
+function SideBar({ showSideBar, toggleSideBar }) {
   return (
     <SideMenu>
       <Sidebar
@@ -15,10 +16,10 @@ function SideBar({ showSideBar }) {
         animation="overlay"
         icon="labeled"
         inverted
-        //   onHide={this.handleSidebarHide}
         vertical
+        width="very wide"
         visible={showSideBar}
-        width="thin"
+        onHide={toggleSideBar}
       >
         hi
       </Sidebar>
