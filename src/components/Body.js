@@ -15,7 +15,7 @@ width:calc(100% - 3rem);
     width: 90% !important;
 }
 .ui.radio.checkbox{
-    align-items: center;
+    
     justify-content: end;
 }
 `
