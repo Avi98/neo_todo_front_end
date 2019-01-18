@@ -11,18 +11,17 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 3rem);
+
+  padding: 1rem;
   .ui.input {
-    width: 90% !important;
+    width: 100%;
+    padding-top: 1rem;
   }
 `;
 
 const ContainerRow = styled(Container)`
   flex-direction: row;
   justify-content: end;
-  .addButton {
-    padding: 1rem 0 0 2rem;
-  }
 `;
 const TextHeader = styled(ContainerRow)`
   margin: 0 0 0 0;
@@ -49,10 +48,8 @@ export function Body() {
       <TodoContent />
       <Input placeholder="e.g. Design meeting at 11am p1 #Meeting" />
       <ContainerRow>
-        <div className="addButton">
-          <Button>Add task</Button>
-          <Button basic>Cancle</Button>
-        </div>
+        <Button>Add task</Button>
+        <Button basic>Cancle</Button>
       </ContainerRow>
     </Container>
   );

@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Table = styled.table`
-  width: 90%;
+  padding: 0.5rem;
+  border-bottom: 1px solid grey;
+  width: 100%;
   .tRow .checkbox {
     width: 2rem;
   }
