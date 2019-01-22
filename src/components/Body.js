@@ -3,8 +3,10 @@ import moment from "moment";
 import styled from "styled-components";
 import { Input, Radio } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
+import { connect } from "react-redux";
 
 import { TodoContent } from "./";
+
 const Container = styled.div`
   display: flex;
   align-items: baseline;
@@ -38,7 +40,7 @@ const TextHeader = styled(ContainerRow)`
     font-weight: normal;
   }
 `;
-export function Body() {
+function BodyComp() {
   return (
     <Container>
       <TextHeader>
@@ -54,3 +56,8 @@ export function Body() {
     </Container>
   );
 }
+
+export const Body = connect(
+  mapState,
+  { getAllTodo }
+);

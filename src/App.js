@@ -3,9 +3,6 @@ import { Header, SideBar, Body } from "./components";
 import styled, { withTheme } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
-require("dotenv").config();
-
-console.log("env", process.env);
 
 function App() {
   const [showSideBar, setShowSide] = useState(false);
