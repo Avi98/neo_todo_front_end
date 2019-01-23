@@ -56,8 +56,8 @@ function BodyComp() {
     </Container>
   );
 }
-
-export const Body = connect(
-  mapState,
-  { getAllTodo }
-);
+export const Body = BodyComp;
+// export const Body = connect(
+//   mapState,
+//   { getAllTodo }
+// );
