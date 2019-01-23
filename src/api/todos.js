@@ -1,9 +1,9 @@
-import { fetch } from "./server";
+import { fetchData } from "./server";
 
-const getTodos = () => (dispatch, getStore) => {
+export const getTodos = () => (dispatch, getStore) => {
   dispatch({ type: "startLoading" });
-  fetch
-    .get("todo")
+  fetchData
+    .get("/todo")
     .then(res => {
       dispatch({ type: "getStore", data: res });
       dispatch({ type: "stopLoading" });

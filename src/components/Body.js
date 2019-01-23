@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import moment from "moment";
 import styled from "styled-components";
 import { Input, Radio } from "semantic-ui-react";
@@ -6,6 +6,7 @@ import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import { TodoContent } from "./";
+import { getTodos } from "../api/todos";
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +41,10 @@ const TextHeader = styled(ContainerRow)`
     font-weight: normal;
   }
 `;
-function BodyComp() {
+function BodyComp(props) {
+  useEffect(() => {
+    props.getTodos();
+  });
   return (
     <Container>
       <TextHeader>
@@ -56,8 +60,8 @@ function BodyComp() {
     </Container>
   );
 }
-export const Body = BodyComp;
-// export const Body = connect(
-//   mapState,
-//   { getAllTodo }
-// );
+const mapState = () => {};
+export const Body = connect(
+  mapState,
+  { getTodos }
+)(BodyComp);
