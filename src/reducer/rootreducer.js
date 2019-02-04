@@ -1,7 +1,13 @@
 import { combineReducers } from "redux";
+import { createReducer } from "redux-orm";
 
 import { todoReducer } from "./todo";
+import { schema } from "../reducer/Model/todoModel";
 
-const rootReducer = combineReducers({ todo: todoReducer });
+const reducer = createReducer(schema);
+const rootReducer = combineReducers({
+  todo: todoReducer,
+  orm: reducer
+});
 
 export default rootReducer;
