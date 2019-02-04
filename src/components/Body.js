@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 import { TodoContent } from "./";
 import { getTodos } from "../api/todos";
+import { todoSelector } from "../reducer/selector";
 
 const Container = styled.div`
   display: flex;
@@ -43,8 +44,9 @@ const TextHeader = styled(ContainerRow)`
 `;
 function BodyComp(props) {
   useEffect(() => {
+    console.log("todoReducedr ", props.todoReducedr);
     props.getTodos();
-  });
+  }, []);
   return (
     <Container>
       <TextHeader>
@@ -60,7 +62,9 @@ function BodyComp(props) {
     </Container>
   );
 }
-const mapState = () => {};
+const mapState = state => ({
+  todoReducedr: todoSelector(state)
+});
 export const Body = connect(
   mapState,
   { getTodos }
