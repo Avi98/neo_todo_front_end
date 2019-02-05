@@ -9,12 +9,18 @@ const Table = styled.table`
     width: 2rem;
   }
 `;
+const Text = styled.div`
+  text-decoration: ${p => (p.completed ? "line-through" : "solid")};
+`;
 export function TodoContent(props) {
   const [check, setCheck] = useState(props.completed);
   const { list, completed, updateTodo, todoId, todo_id } = props;
   function onChangeCheck() {
-    setCheck(check => !check);
-    updateTodo(todoId, todo_id, { completed: check });
+    setCheck(check => {
+      updateTodo(todoId, todo_id, { completed: !check });
+      return !check;
+    });
+    console.log("old check", check);
   }
   return (
     <Table>
@@ -24,7 +30,7 @@ export function TodoContent(props) {
             <input type="checkbox" checked={check} onChange={onChangeCheck} />
           </td>
           <td className="todoclass">
-            <div>{list}</div>
+            <Text completed={completed}>{list}</Text>
           </td>
         </tr>
       </tbody>
