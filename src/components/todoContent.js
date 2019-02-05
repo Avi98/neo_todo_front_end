@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 const Table = styled.table`
   padding: 0.5rem;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #e1d7d7;
   width: 100%;
+  cursor: pointer;
   .tRow .checkbox {
     width: 2rem;
   }
