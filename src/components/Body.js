@@ -42,18 +42,21 @@ const TextHeader = styled(ContainerRow)`
     font-weight: normal;
   }
 `;
-function BodyComp(props) {
+function BodyComp({ todoReducedr, getTodos }) {
+  console.log("todoReducedr ", todoReducedr);
   useEffect(() => {
-    console.log("todoReducedr ", props.todoReducedr);
-    props.getTodos();
+    getTodos();
   }, []);
+
   return (
     <Container>
       <TextHeader>
         <h2 className="sectionHeader">Today</h2>
         <span className="subHeader"> {moment().format("MMM Do YY")}</span>
       </TextHeader>
-      <TodoContent />
+      {todoReducedr.map(obj => (
+        <TodoContent list={obj.list} completed={obj.completed} />
+      ))}
       <Input placeholder="e.g. Design meeting at 11am p1 #Meeting" />
       <ContainerRow>
         <Button>Add task</Button>

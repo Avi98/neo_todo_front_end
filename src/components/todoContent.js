@@ -9,7 +9,7 @@ const Table = styled.table`
     width: 2rem;
   }
 `;
-export function TodoContent() {
+export function TodoContent({ list, completed }) {
   return (
     <Table>
       <tbody className="tBody">
@@ -18,7 +18,7 @@ export function TodoContent() {
             <input type="checkbox" />
           </td>
           <td className="todoclass">
-            <div>sample</div>
+            <div>{list}</div>
           </td>
         </tr>
       </tbody>
