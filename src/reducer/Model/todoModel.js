@@ -11,6 +11,7 @@ export class TodoModel extends Model {
           const todo = { ...item, date: moment(item.date).format("MMM Do YY") };
           TodoModel.create(todo);
         });
+        break;
     }
   }
 }
@@ -18,7 +19,8 @@ TodoModel.modelName = "TodoModel";
 TodoModel.fields = {
   _id: attr(),
   completed: attr(),
-  date: fk("DateModel")
+  // date: fk("DateModel"),
+  id: attr()
 };
 
 export class DateModel extends Model {
@@ -29,11 +31,13 @@ export class DateModel extends Model {
         unique(dateArr).forEach(date => {
           DateModel.create({ date: moment(date).format("MMM Do YY") });
         });
+        break;
     }
   }
 }
 DateModel.modelName = "DateModel";
 DateModel.fields = {
+  id: attr(),
   date: fk("TodoModel")
 };
 export const schema = new ORM();
