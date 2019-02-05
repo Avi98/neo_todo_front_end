@@ -12,6 +12,9 @@ export class TodoModel extends Model {
           TodoModel.create(todo);
         });
         break;
+      case "updateTodo_completed":
+        TodoModel.withId(action.id).completed = action.payload.completed;
+        break;
     }
   }
 }

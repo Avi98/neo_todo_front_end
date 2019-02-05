@@ -6,7 +6,7 @@ import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import { TodoContent } from "./";
-import { getTodos } from "../api/todos";
+import { getTodos, updateTodoAction } from "../api/todos";
 import { todoSelector } from "../reducer/selector";
 
 const Container = styled.div`
@@ -42,12 +42,14 @@ const TextHeader = styled(ContainerRow)`
     font-weight: normal;
   }
 `;
-function BodyComp({ todoReducedr, getTodos }) {
+function BodyComp({ todoReducedr, getTodos, updateTodoAction }) {
   console.log("todoReducedr ", todoReducedr);
   useEffect(() => {
     getTodos();
   }, []);
-
+  function updateTodo(id, todo_id, payload) {
+    updateTodoAction(id, todo_id, payload);
+  }
   return (
     <Container>
       <TextHeader>
@@ -55,7 +57,13 @@ function BodyComp({ todoReducedr, getTodos }) {
         <span className="subHeader"> {moment().format("MMM Do YY")}</span>
       </TextHeader>
       {todoReducedr.map(obj => (
-        <TodoContent list={obj.list} completed={obj.completed} />
+        <TodoContent
+          list={obj.list}
+          completed={obj.completed}
+          todoId={obj.id}
+          todo_id={obj._id}
+          updateTodo={updateTodo}
+        />
       ))}
       <Input placeholder="e.g. Design meeting at 11am p1 #Meeting" />
       <ContainerRow>
@@ -70,5 +78,5 @@ const mapState = state => ({
 });
 export const Body = connect(
   mapState,
-  { getTodos }
+  { getTodos, updateTodoAction }
 )(BodyComp);
