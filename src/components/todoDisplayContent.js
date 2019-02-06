@@ -13,7 +13,7 @@ const Text = styled.div`
   text-decoration: ${p => (p.completed ? "line-through" : "solid")};
 `;
 export function TodoDisplayContent(props) {
-  const { onChangeCheck, check, completed, list } = props;
+  const { onChangeCheck, check, completed, list, setEditMode } = props;
   return (
     <Table>
       <tbody className="tBody">
@@ -21,7 +21,7 @@ export function TodoDisplayContent(props) {
           <td className="checkbox" style={{ color: "yellow" }}>
             <input type="checkbox" checked={check} onChange={onChangeCheck} />
           </td>
-          <td className="todoclass">
+          <td className="todoclass" onClick={setEditMode}>
             <Text completed={completed}>{list}</Text>
           </td>
         </tr>
