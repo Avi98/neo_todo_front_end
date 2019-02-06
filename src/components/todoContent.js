@@ -1,18 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-
-const Table = styled.table`
-  padding: 0.5rem;
-  border-bottom: 1px solid #e1d7d7;
-  width: 100%;
-  cursor: pointer;
-  .tRow .checkbox {
-    width: 2rem;
-  }
-`;
-const Text = styled.div`
-  text-decoration: ${p => (p.completed ? "line-through" : "solid")};
-`;
+import { TodoContentEdit } from "./";
+import { TodoDisplayContent } from "./";
 export function TodoContent(props) {
   const [check, setCheck] = useState(props.completed);
   const { list, completed, updateTodo, todoId, todo_id } = props;
@@ -24,17 +12,14 @@ export function TodoContent(props) {
     console.log("old check", check);
   }
   return (
-    <Table>
-      <tbody className="tBody">
-        <tr className="tRow">
-          <td className="checkbox" style={{ color: "yellow" }}>
-            <input type="checkbox" checked={check} onChange={onChangeCheck} />
-          </td>
-          <td className="todoclass">
-            <Text completed={completed}>{list}</Text>
-          </td>
-        </tr>
-      </tbody>
-    </Table>
+    <>
+      <TodoDisplayContent
+        onChangeCheck={onChangeCheck}
+        check={check}
+        completed={completed}
+        list={list}
+      />
+      <TodoContentEdit />
+    </>
   );
 }
